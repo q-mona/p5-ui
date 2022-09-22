@@ -1,0 +1,7 @@
+examples/
+node_modules/
+src/
+
+.gitignore
+index.html
+vite.config.js

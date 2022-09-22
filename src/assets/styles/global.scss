@@ -1,0 +1,40 @@
+$color-blue: #1cfeff;
+$color-red: #ff0022;
+$color-black: #000;
+$color-white: #fff;
+$color-gray: #808080;
+
+$font-size-extra-large: 24px;
+$font-size-large: 18px;
+$font-size-medium: 16px;
+$font-size-small: 14px;
+
+@font-face {
+    font-family: "阿里妈妈数黑体 Bold";
+    font-weight: 700;
+    src: url("../font/q-ADVcvSQqAACBZEk73Le.woff2") format("woff2"),
+        url("../font/q-ADVcvSQqAACBZEk73Le.woff") format("woff");
+    font-display: swap;
+}
+
+@mixin p5-font {
+    font-family: "阿里妈妈数黑体 Bold";
+    font-weight: 700;
+}
+
+
+.text-size-extra-large {
+    font-size: $font-size-extra-large;
+}
+
+.text-size-large {
+    font-size: $font-size-large;
+}
+
+.text-size-medium {
+    font-size: $font-size-medium;
+}
+
+.text-size-small {
+    font-size: $font-size-small;
+}

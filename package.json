@@ -1,0 +1,22 @@
+{
+  "name": "p5-ui",
+  "auther": "AYi",
+  "version": "0.0.4",
+  "main": "dist/p5-ui.cjs",
+  "module": "dist/p5-ui.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.37"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.1.0",
+    "sass": "^1.54.9",
+    "vite": "^3.1.0",
+    "vite-plugin-vue-setup-extend": "^0.4.0"
+  }
+}

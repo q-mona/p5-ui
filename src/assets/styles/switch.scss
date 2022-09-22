@@ -1,0 +1,168 @@
+@mixin p5-switch-bg-pseudo-el-ctn {
+    content: '';
+    position: absolute;
+    width: 64px;
+    height: 30px;
+    background-color: $color-white;
+}
+
+@mixin p5-switch-icon-pseudo-el-ctn {
+    position: absolute;
+    top: -8px;
+    font-size: $font-size-extra-large;
+    color: $color-white;
+    -webkit-text-fill-color: $color-black;
+    -webkit-text-stroke-width: 1px;
+}
+
+@mixin p5-switch-size {
+    width: 80px;
+    height: 24px;
+}
+
+
+.p5-switch-size-small {
+    transform: skewX(4deg) scale(0.8);
+}
+
+.p5-switch-size-medium {
+    transform: skewX(4deg);
+}
+
+.p5-switch-size-large {
+    transform: skewX(4deg) scale(1.2);
+}
+
+.p5-switch-ctn {
+    @include p5-font;
+    position: relative;
+    
+    input[type='checkbox'] {
+        @include p5-switch-size;
+
+        position: absolute;
+        top:0;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .p5-switch-bg-ctn{
+        overflow: hidden
+    }
+
+    .p5-switch-bg {
+        @include p5-switch-size;
+
+        position: relative;
+        display: block;
+        background-color: $color-black;
+        border: 2px solid $color-white;
+        box-sizing: border-box;
+
+        &::before {
+            @include p5-switch-bg-pseudo-el-ctn;
+
+            top: -10px;
+            left: -4px;
+            transform: rotate(-8deg);
+        }
+
+        &::after {
+            @include p5-switch-bg-pseudo-el-ctn;
+
+            bottom: -14px;
+            right: 2px;
+            transform: rotate(6deg);
+        }
+
+    }
+
+    .p5-switch-icon {
+        @include p5-switch-size;
+        
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            width: 48px;
+            height: 30px;
+            background-image: url(../../assets/images/icon-on.png);
+            background-size: cover;
+            transform: rotate(-4deg);
+            top: -4px;
+            left: 0px;
+        }
+
+        &::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            width: 54px;
+            height: 30px;
+            background-image: url(../../assets/images/icon-off.png);
+            background-size: cover;
+            transform: rotate(4deg);
+            top: -2px;
+            right: 2px;
+        }
+    }
+
+    .p5-switch-sub-icon{
+        @include p5-switch-size;
+        
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &::before {
+            content: 'OFF';
+            color: $color-white;
+            position: absolute;
+            transform: rotate(6deg);
+            font-size: $font-size-small;
+            top: 2px;
+            right: 4px;
+        }
+
+        &::after {
+            content: 'ON';
+            color: $color-white;
+            position: absolute;
+            transform: rotate(-6deg);
+            font-size: $font-size-small;
+            top: 2px;
+            left: 4px;
+        }
+    }
+}
+
+.p5-switch-on span::before{
+    opacity: 1;
+}
+
+.p5-switch-on span::after{
+    opacity: 0;
+}
+
+.p5-switch-off span::before{
+    opacity: 0;
+}
+
+.p5-switch-off span::after{
+    opacity: 1;
+}
+
+.p5-switch-bg-move::before{
+    margin-left: -15px;
+}
+.p5-switch-bg-move::after{
+    margin-right: -15px;
+}
+

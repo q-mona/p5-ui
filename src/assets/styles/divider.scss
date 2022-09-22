@@ -1,0 +1,18 @@
+.p5-divider-ctn{
+    position: relative;
+    background-color: $color-red;
+    box-shadow: 2px 2px 2px $color-gray;
+    border-radius: 2px;
+}
+
+.p5-divider-horizontal{
+    margin: 24px 0;
+    height: 4px;
+    width: 100%;
+}
+
+.p5-divider-vertical{
+    margin: 0 24px;
+    height: 100%;
+    width: 4px;
+}
