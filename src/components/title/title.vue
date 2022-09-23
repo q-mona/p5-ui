@@ -31,8 +31,8 @@ const getSelectedIdx = computed(() => {
 
 // 设置额外的class
 const getExtraCass = computed(() => {
-    const text_animation = props.animation ? 'p5-text-animation' : ''
-    return `text-size-${props.size} ${text_animation}`
+    const text_animation = props.animation ? 'p5-title-animation' : ''
+    return `title-size-${props.size} ${text_animation}`
 })
 
 // 设置额外的style
@@ -48,7 +48,7 @@ const getSpanStyle = computed(() => (idx) => {
 </script>
     
 <template>
-    <p class="p5-text-ctn" :class="getExtraCass" ref="text_dom">
+    <p class="p5-title-ctn" :class="getExtraCass" ref="text_dom">
         <span v-for="(str, idx) in content" :style="getSpanStyle(idx)">{{str}}</span>
     </p>
 </template>

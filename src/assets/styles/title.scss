@@ -1,0 +1,104 @@
+@mixin p5-title-pseudo-el-ctn {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    z-index: -1;
+}
+
+.p5-title-ctn {
+    @include p5-font;
+
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    z-index: 1;
+
+    span {
+        display: inline-block;
+        padding: 2px 2px;
+    }
+}
+
+.p5-title-animation {
+    &:hover::before {
+        @include p5-title-pseudo-el-ctn;
+
+        background-color: #1cfeff;
+        animation: bgBlue 1s ease-in infinite;
+    }
+
+    &:hover::after {
+        @include p5-title-pseudo-el-ctn;
+
+        mix-blend-mode: screen;
+        background-color: #ff0022;
+        animation: bgRed 1s ease-out infinite;
+    }
+}
+
+@keyframes bgBlue {
+    0% {
+        top: 6%;
+        transform: skew(-30deg, -2deg) scale(0.7);
+    }
+
+    20% {
+        top: 3%;
+        transform: skew(45deg, 4deg) scale(0.8);
+    }
+
+    40% {
+        top: -2%;
+        transform: skew(-20deg, -2deg) scale(0.9);
+    }
+
+    60% {
+        top: -4%;
+        transform: skew(20deg, 2deg) scale(1);
+    }
+
+    80% {
+        top: 3%;
+        transform: skew(-45deg, -4deg) scale(0.85);
+    }
+
+    100% {
+        top: 6%;
+        transform: skew(45deg, 4deg) scale(0.7);
+    }
+}
+
+@keyframes bgRed {
+    0% {
+        top: -4%;
+        transform: skew(45deg, 4deg) scale(1);
+    }
+
+    20% {
+        top: -1%;
+        transform: skew(-30deg, -3deg) scale(0.9);
+    }
+
+    40% {
+        top: 2%;
+        transform: skew(60deg, 6deg) scale(0.75);
+    }
+
+    60% {
+        top: 3%;
+        transform: skew(-20deg, -2deg) scale(0.7);
+    }
+
+    80% {
+        top: -2%;
+        transform: skew(30deg, 3deg) scale(0.85);
+    }
+
+    100% {
+        top: -4%;
+        transform: skew(45deg, 4deg) scale(1);
+    }
+}

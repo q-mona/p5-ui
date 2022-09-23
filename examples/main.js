@@ -12,6 +12,5 @@ const app = createApp(App)
 app.use(P5UI)
 // app.component(P5Button.name, P5Button)
 // app.component(P5Switch.name, P5Switch)
-// app.component(P5Text.name, P5Text)
 
 app.mount('#app')

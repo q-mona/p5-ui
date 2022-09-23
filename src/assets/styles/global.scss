@@ -22,6 +22,23 @@ $font-size-small: 14px;
     font-weight: 700;
 }
 
+@mixin p5-abs-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+@mixin p5-abs-left-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+@mixin p5-flex-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .text-size-extra-large {
     font-size: $font-size-extra-large;

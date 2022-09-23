@@ -1,20 +1,64 @@
+@mixin p5-slider-thumb($background-url, $rotate) {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background-image: $background-url;
+    background-size: cover;
+    transform: rotate($rotate);
+}
+
 .p5-slider-ctn {
-    img {
-        width: 14px;
-        height: 14px;
+    @include p5-flex-center;
+    
+    position: relative;
+    padding: 4px;
+
+    .p5-slider-text-left{
+        transform: rotate(-4deg);
+    }
+
+    .p5-slider-text-right{
+        transform: rotate(4deg);
+    }
+
+    .p5-slider-bg {
+        position: relative;
+        width: 100%;
+        margin: 0 10px;
+        min-width: 100px;
+        min-height: 20px;
+        transform: skewX(4deg);
+
+
+        .p5-slider-icon{
+            position: absolute;
+            top: 16px;
+            padding: 4px;
+            width: 28px;
+            text-align: center;
+            background-color: $color-black;
+            font-size: $font-size-small;
+            border-radius: 4px;
+        }
+        .p5-slider-progress {
+            @include p5-abs-center;
+
+            appearance: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 2px;
+            border-radius: 1px;
+            background-color: $color-white;
+        }
     }
 }
 
-.p5-star-rotate {
-    animation: star-rotate 1s infinite linear;
+.p5-slider-progress-static::-webkit-slider-thumb {
+    @include p5-slider-thumb(url(../images/icon-star-white.png), 60deg);
 }
 
-@keyframes star-rotate {
-    0% {
-        transform: rotate(0deg);
-    }
+.p5-slider-progress-hover::-webkit-slider-thumb {
+    @include p5-slider-thumb(url(../images/icon-star-black.png), 90deg);
 
-    100% {
-        transform: rotate(360deg);
-    }
 }

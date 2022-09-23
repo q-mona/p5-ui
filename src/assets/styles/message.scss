@@ -1,0 +1,63 @@
+.p5-msg-ctn {
+    @include p5-abs-center;
+    position: fixed;
+    z-index: 99;
+    transition: top 0.5s;
+
+    .p5-msg-sub-ctn {
+        position: relative;
+
+        .p5-msg-img {
+            width: 250px;
+            border-radius: 6px;
+            box-shadow: 2px 2px 4px $color-gray;
+        }
+
+        .p5-sword-img {
+            position: absolute;
+            right: 10px;
+            top: -70px;
+            height: 100px;
+            transform-origin: 50% 100%;
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.p5-sword-animation {
+    animation: sword-rotate 1s ease-in;
+}
+
+@keyframes sword-rotate {
+    0%{
+        right: -220px;
+        top: -300px;
+    }
+    30%{
+        right: 10px;
+        top: -70px;
+    }
+    50% {
+        transform: rotate(30deg);
+    }
+
+    60% {
+        transform: rotate(60deg);
+    }
+
+    70% {
+        transform: rotate(35deg);
+    }
+
+    80% {
+        transform: rotate(55deg);
+    }
+
+    90% {
+        transform: rotate(40deg);
+    }
+
+    100% {
+        transform: rotate(45deg);
+    }
+}

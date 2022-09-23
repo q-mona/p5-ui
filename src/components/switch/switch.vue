@@ -3,7 +3,7 @@ import { computed } from '@vue/reactivity';
 import { ref } from 'vue';
 
 const props = defineProps({
-    modelValue: { type: Boolean, default: true },
+    modelValue: { type: Boolean, require: true },
     size: { type: String, default: 'medium' }
 })
 

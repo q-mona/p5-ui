@@ -19,8 +19,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/index.js',
-      formats: ['cjs', 'es'],
-      exports: 'named'
+      formats: ['cjs', 'es']
     },
     rollupOptions: {
       external: ['vue'],

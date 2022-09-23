@@ -1,7 +1,7 @@
 @mixin p5-switch-bg-pseudo-el-ctn {
     content: '';
     position: absolute;
-    width: 64px;
+    width: 60px;
     height: 30px;
     background-color: $color-white;
 }
@@ -39,10 +39,8 @@
     
     input[type='checkbox'] {
         @include p5-switch-size;
-
-        position: absolute;
-        top:0;
-        left: 0;
+        @include p5-abs-left-top;
+        
         padding: 0;
         margin: 0;
         opacity: 0;
@@ -66,7 +64,7 @@
             @include p5-switch-bg-pseudo-el-ctn;
 
             top: -10px;
-            left: -4px;
+            left: 2px;
             transform: rotate(-8deg);
         }
 

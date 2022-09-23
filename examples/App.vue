@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from '@vue/reactivity';
-import { ref } from 'vue';
-
-const text1 = computed(()=>sw_value1.value?'你好 世界':'浮动空间，给定。官方，非递归！给?fd给定。')
+import { onMounted, ref } from 'vue';
+import { P5Message } from '../src/index.js'
+const text1 = computed(() => sw_value1.value ? '你好 世界' : '浮动空间，给定。官方，非递归！给?fd给定。')
 const text2 = ref('为了在声明 props 和 emits 选项时获得完整的类型推导支持，我们可以使用 defineProps 和 defineEmits API，它们将自动地在 <script setup> 中可用。')
 
 
@@ -10,12 +10,28 @@ const sw_value1 = ref(true)
 const sw_value2 = ref(false)
 const sw_value3 = ref(true)
 
+const sl_value1 = ref(0)
+const sl_value2 = ref(50)
+
+const slTest = (val) => {
+  console.log(val)
+}
+
+const showMsg = () => {
+  P5Message({ type: Math.random() > 0.5 ? 'failed' : 'success', duration: 3000 })
+}
+onMounted(() => {
+})
 </script>
 
 <template>
   <div class="app-ctn">
 
-    <p5-slider></p5-slider>
+    <p5-slider @change="slTest" placement="top" v-model="sl_value1" left_text="小" right_text="大"></p5-slider>
+
+    <p5-slider :tip="false" style="margin-top: 20px;" :width="200" :min="10" :max="450" v-model="sl_value2"
+      left_text="音量">
+    </p5-slider>
 
     <p5-divider></p5-divider>
 
@@ -28,8 +44,8 @@ const sw_value3 = ref(true)
     <p5-divider style="width: 300px;"></p5-divider>
 
     <p5-button>
-      <p5-title font_color="#ff0022" selected_font_color="#000" selected_bg_color="#ff0022" :animation="true"
-        content="异闻录 测试 Test"></p5-title>
+      <p5-title @click="showMsg" font_color="#ff0022" selected_font_color="#000" selected_bg_color="#ff0022"
+        :animation="true" content="异闻录 测试 Test"></p5-title>
     </p5-button>
 
     <p5-button style="margin-top: 10px;">
@@ -38,8 +54,10 @@ const sw_value3 = ref(true)
 
     <p5-divider style="width: 400px;"></p5-divider>
 
+    <p5-text size="large">你好世界</p5-text>
+
     <p5-title :content="text1" :animation="true"></p5-title>
-    <p5-title style="max-width: 200px;" :content="text2"></p5-title>
+    <p5-title @click="showMsg" style="max-width: 200px;" :content="text2"></p5-title>
 
     <p5-divider></p5-divider>
 
@@ -50,10 +68,12 @@ const sw_value3 = ref(true)
 </template>
 
 <style lang="scss">
-html,body{
+html,
+body {
   margin: 0;
   padding: 0;
 }
+
 .app-ctn {
   display: flex;
   flex-direction: column;
