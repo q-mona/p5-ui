@@ -1,0 +1,52 @@
+.p5-noti-ctn {
+    position: fixed;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    .p5-noti-sub-ctn {
+        position: relative;
+
+        .p5-portrait-img {
+            @include p5-abs-center;
+            top: 0;
+            left: 0;
+            width: 160px;
+        }
+
+        .p5-dialog-ctn {
+            position: relative;
+            width: 350px;
+            height: 20px;
+            margin-left: 150px;
+
+            .p5-dialog-img {
+                @include p5-abs-center;
+                width: 500px;
+                z-index: -1;
+            }
+
+            .p5-noti-title {
+                position: absolute;
+                top: -38px;
+                left: -12px;
+
+                transform: rotate(-16deg);
+            }
+
+            .p5-noti-text {
+                width: 340px;
+
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                -o-text-overflow: ellipsis;
+
+                margin-top: 10px;
+                color: white;
+            }
+        }
+
+    }
+
+
+}

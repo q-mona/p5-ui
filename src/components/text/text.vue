@@ -1,15 +1,19 @@
 <script setup name='P5Text'>
-import { computed } from '@vue/reactivity';
+import { watch, ref } from 'vue';
 
 const props = defineProps({
     size: { type: String, default: 'medium' }
 })
 
-const getSizeClass = computed(() => `text-size-${props.size}`)
+const size_lass = ref(`text-size-${props.size}`)
+
+watch(()=>props.size, (value, oldValue)=>{
+    size_lass.value = value
+})
 </script>
 
 <template>
-    <p class="p5-text" :class="[getSizeClass]">
+    <p class="p5-text" :class="[size_lass]">
         <slot></slot>
     </p>
 </template>

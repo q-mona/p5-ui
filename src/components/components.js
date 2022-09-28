@@ -5,5 +5,8 @@ export { default as P5Input } from './input/input.vue'
 export { default as P5Switch } from './switch/switch.vue'
 export { default as P5Slider } from './slider/slider.vue'
 export { default as P5Text } from './text/text.vue'
-// export { default as P5Message } from './message/message.vue'
+export { default as P5BackTop } from './backTop/backTop.vue'
+
+export { default as P5Message } from './message/message.js'
+export { default as P5Notification } from './notification/notification.js'
 

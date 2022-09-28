@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from '@vue/reactivity';
 import { onMounted, ref } from 'vue';
-import { P5Message } from '../src/index.js'
+import { P5Message, P5Notification } from '../src/index.js'
 const text1 = computed(() => sw_value1.value ? '你好 世界' : '浮动空间，给定。官方，非递归！给?fd给定。')
 const text2 = ref('为了在声明 props 和 emits 选项时获得完整的类型推导支持，我们可以使用 defineProps 和 defineEmits API，它们将自动地在 <script setup> 中可用。')
 
@@ -18,14 +18,26 @@ const slTest = (val) => {
 }
 
 const showMsg = () => {
-  P5Message({ type: Math.random() > 0.5 ? 'failed' : 'success', duration: 3000 })
+  P5Notification({ content: 'hello!', top: 200, character: 'Ann' })
+  // P5Message({ type: Math.random() > 0.5 ? 'failed' : 'success', duration: 3000 })
 }
+
 onMounted(() => {
 })
 </script>
 
 <template>
   <div class="app-ctn">
+
+    <!-- <p5-notification character="Ann">
+      你好 世界嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻东南方了每个客房的美国了麦克雷
+    </p5-notification>
+
+    <p5-notification :top="400" :character="noti_name" @click="noti_test">
+      你好 世界
+    </p5-notification> -->
+
+    <p5-backTop :scroll_height="100"></p5-backTop>
 
     <p5-slider @change="slTest" placement="top" v-model="sl_value1" left_text="小" right_text="大"></p5-slider>
 

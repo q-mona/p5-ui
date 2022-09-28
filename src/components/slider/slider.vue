@@ -1,6 +1,6 @@
 <script setup name='P5Slider'>
 import { computed } from '@vue/reactivity';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const props = defineProps({
     left_text: { type: String, default: '' }, // 左边文本
@@ -38,8 +38,13 @@ const showIconAnimation = (val) => {
 }
 
 // 响应式改变tip位置
-const getIconPosition = computed(() => {
-    return temp_value.value / (props.max - props.min) * props.width - 18
+const icon_position = ref(temp_value.value / (props.max - props.min) * props.width - 18)
+// const getIconPosition = computed(() => {
+//     return temp_value.value / (props.max - props.min) * props.width - 18
+// })
+
+watch(temp_value, (value, oldValue)=>{
+    icon_position.value = value / (props.max - props.min) * props.width - 18
 })
 </script>
 
@@ -49,7 +54,7 @@ const getIconPosition = computed(() => {
 
         <div class="p5-slider-bg" :style="{width: width + 'px'}">
             <span v-if="tip" :hidden="!is_hover" class="p5-slider-icon p5-text"
-                :style="{left: getIconPosition + 'px', 'top': placement==='top'?'-30px':'24px'}">{{temp_value}}</span>
+                :style="{left: icon_position + 'px', 'top': placement==='top'?'-30px':'24px'}">{{temp_value}}</span>
 
             <input class="p5-slider-progress" :class="[is_hover?'p5-slider-progress-hover':'p5-slider-progress-static']"
                 type="range" :min="min" :max="max" v-model="temp_value" @change="changeValue" />
