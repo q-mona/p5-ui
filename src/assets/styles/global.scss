@@ -55,3 +55,14 @@ $font-size-small: 14px;
 .text-size-small {
     font-size: $font-size-small;
 }
+
+
+.p5-scrollbar{
+    &::-webkit-scrollbar{
+        width: 12px;
+    }
+    &::-webkit-scrollbar-thumb{
+        background: linear-gradient(transparent, #30ff00);
+        border-radius: 6px;
+    }
+}

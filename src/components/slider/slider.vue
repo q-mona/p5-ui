@@ -1,5 +1,4 @@
 <script setup name='P5Slider'>
-import { computed } from '@vue/reactivity';
 import { ref, watch } from 'vue';
 
 const props = defineProps({
@@ -38,13 +37,10 @@ const showIconAnimation = (val) => {
 }
 
 // 响应式改变tip位置
-const icon_position = ref(temp_value.value / (props.max - props.min) * props.width - 18)
-// const getIconPosition = computed(() => {
-//     return temp_value.value / (props.max - props.min) * props.width - 18
-// })
+const icon_position = ref((temp_value.value - props.min) / (props.max - props.min) * props.width - 18)
 
-watch(temp_value, (value, oldValue)=>{
-    icon_position.value = value / (props.max - props.min) * props.width - 18
+watch(temp_value, (value, oldValue) => {
+    icon_position.value = (value - props.min) / (props.max - props.min) * props.width - 18
 })
 </script>
 

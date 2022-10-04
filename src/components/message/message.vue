@@ -1,6 +1,7 @@
 <script setup name='P5Message'>
 import { computed } from '@vue/reactivity';
 import { onMounted, ref } from 'vue';
+import { getImageFile } from '../../utils/tool.js'
 
 const props = defineProps({
     type: { type: String, default: 'default' }, // 消息类别
@@ -12,8 +13,6 @@ const sword_move = ref(false) // 是否显示短剑动画
 const msg_opacity = ref(1) // 消息透明度
 const top = ref(0) // 消息顶部位置
 
-// 获得消息类型对应图片
-const getMsgImgSrc = computed(() => `/src/assets/images/msg-${props.type}.png`) 
 // 设置消失时间
 const getOpacityTime = computed(() => props.duration - 1000 > 0 ? props.duration - 1000 : props.duration)
 
@@ -37,7 +36,7 @@ onMounted(() => {
 <template>
     <div class="p5-msg-ctn" :style="{top: top + 'px'}">
         <div class="p5-msg-sub-ctn" :style="{'opacity': msg_opacity}">
-            <img class="p5-msg-img" :src="getMsgImgSrc" alt="message type">
+            <img class="p5-msg-img" :src="getImageFile(`msg/${type}.png`)" alt="">
             <img class="p5-sword-img" :class="[sword_move?'p5-sword-animation':'']" src="../../assets/images/sword.png"
                 alt="sword">
         </div>

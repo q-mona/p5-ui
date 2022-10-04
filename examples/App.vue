@@ -11,7 +11,7 @@ const sw_value2 = ref(false)
 const sw_value3 = ref(true)
 
 const sl_value1 = ref(0)
-const sl_value2 = ref(50)
+const sl_value2 = ref(150)
 
 const slTest = (val) => {
   console.log(val)
@@ -19,31 +19,24 @@ const slTest = (val) => {
 
 const showMsg = () => {
   P5Notification({ content: 'hello!', top: 200, character: 'Ann' })
-  // P5Message({ type: Math.random() > 0.5 ? 'failed' : 'success', duration: 3000 })
+  P5Message({ type: Math.random() > 0.5 ? 'fail' : 'clear', duration: 20000 })
 }
 
-onMounted(() => {
-})
+onMounted(() => { })
+
+
 </script>
 
 <template>
-  <div class="app-ctn">
-
-    <!-- <p5-notification character="Ann">
-      你好 世界嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻东南方了每个客房的美国了麦克雷
-    </p5-notification>
-
-    <p5-notification :top="400" :character="noti_name" @click="noti_test">
-      你好 世界
-    </p5-notification> -->
-
-    <p5-backTop :scroll_height="100"></p5-backTop>
-
     <p5-slider @change="slTest" placement="top" v-model="sl_value1" left_text="小" right_text="大"></p5-slider>
 
-    <p5-slider :tip="false" style="margin-top: 20px;" :width="200" :min="10" :max="450" v-model="sl_value2"
-      left_text="音量">
+  <!-- menu、滚动条、输入框 -->
+  <div class="app-ctn">
+    <p5-backTop :scroll_height="100"></p5-backTop>
+
+    <p5-slider style="margin-top: 20px;" :width="200" :min="100" :max="200" v-model="sl_value2" left_text="音量">
     </p5-slider>
+
 
     <p5-divider></p5-divider>
 

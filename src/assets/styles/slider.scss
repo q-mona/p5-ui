@@ -8,26 +8,28 @@
 }
 
 .p5-slider-ctn {
-    @include p5-flex-center;
-    
+    // @include p5-flex-center;
+    display: inline-flex;
     position: relative;
     padding: 4px;
 
     .p5-slider-text-left{
+        // display: inline-block;
         transform: rotate(-4deg);
     }
 
     .p5-slider-text-right{
+        // display: inline-block;
         transform: rotate(4deg);
     }
 
     .p5-slider-bg {
+        // display: inline-block;
         position: relative;
         width: 100%;
         margin: 0 10px;
         min-width: 100px;
         min-height: 20px;
-        transform: skewX(4deg);
 
 
         .p5-slider-icon{

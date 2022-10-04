@@ -1,6 +1,5 @@
 <script setup name='P5Input'>
-import { computed } from '@vue/reactivity';
-import { onMounted, reactive, ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 
 const props = defineProps({
     length: { type: Number, default: 10 },
