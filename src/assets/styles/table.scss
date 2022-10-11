@@ -1,0 +1,92 @@
+.p5-table-ctn {
+    @include p5-font;
+
+    position: relative;
+    width: 100%;
+    overflow: auto;
+    text-align: left;
+    color: $color-white;
+
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: separate;
+
+        td {
+            background-color: $color-black;
+        }
+
+        td,
+        th {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            padding: 6px 16px;
+        }
+
+
+        thead tr {
+            th {
+                background-color: $color-white;
+                color: $color-black;
+                position: sticky;
+                top: 0;
+                padding: 10px 16px;
+                box-sizing: border-box;
+
+                &:first-child {
+                    background-color: $color-white;
+                    color: $color-black;
+                    z-index: 2;
+                }
+
+                &:last-child {
+                    background-color: $color-white;
+                    color: $color-black;
+                    z-index: 2;
+                }
+            }
+
+        }
+    }
+}
+
+.p5-tr-onhover:hover {
+    background-color: white;
+    color: black;
+}
+
+.p5-tr-onhover:hover td {
+    background-color: white;
+    color: black;
+}
+
+.p5-tr-onhover:hover td:first-child {
+    background-color: white;
+    color: black;
+}
+
+.p5-tr-onhover:hover td:last-child {
+    background-color: white;
+    color: black;
+}
+
+
+.p5-td-fix-left {
+    td:first-child,
+    th:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+    }
+}
+.p5-td-fix-right {
+    td:last-child,
+    th:last-child {
+        position: sticky;
+        right: 0;
+        z-index: 1;
+    }
+}

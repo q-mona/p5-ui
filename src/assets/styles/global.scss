@@ -58,11 +58,18 @@ $font-size-small: 14px;
 
 
 .p5-scrollbar{
-    &::-webkit-scrollbar{
-        width: 12px;
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 6px;
+        height: 6px;
     }
-    &::-webkit-scrollbar-thumb{
-        background: linear-gradient(transparent, #30ff00);
-        border-radius: 6px;
+
+    &::-webkit-scrollbar-thumb {
+        height: 4px;
+        background-color: $color-white;
+    }
+
+    &::-webkit-scrollbar-corner {
+        display: none;
     }
 }
