@@ -9,19 +9,20 @@ const props = defineProps({
 
 const ths = ref([])
 const col_style = ref({})
-const fix_right = computed(()=>props.fix=='right'||props.fix=='left-right')
-const fix_left = computed(()=>props.fix=='left'||props.fix=='left-right')
+const fix_right = computed(() => props.fix == 'right' || props.fix == 'left-right')
+const fix_left = computed(() => props.fix == 'left' || props.fix == 'left-right')
 const setColStyle = () => {
     let temp = {}
     ths.value.forEach(item => {
         temp[item] = {}
     })
-    slots.default().forEach((item, idx) => {
-        for (const key in item.props) {
-            if (key != 'label')
-                temp[item.props.label][key] = item.props[key]
-        }
-    })
+    if (slots.default)
+        slots.default().forEach((item, idx) => {
+            for (const key in item.props) {
+                if (key != 'label')
+                    temp[item.props.label][key] = item.props[key]
+            }
+        })
 
     return temp
 }

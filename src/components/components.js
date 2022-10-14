@@ -7,4 +7,5 @@ export { default as P5Text } from './text/text.vue'
 export { default as P5BackTop } from './backTop/backTop.vue'
 export { default as P5Table } from './table/table.vue'
 export { default as P5TableItem } from './table/tableItem.vue'
+export { default as P5Icon } from './icon/icon.vue'
 

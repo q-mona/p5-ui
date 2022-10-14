@@ -18,8 +18,8 @@ const slTest = (val) => {
 }
 
 const showMsg = () => {
-  P5Notification({ content: 'hello!', top: 200, character: 'Ann' })
-  P5Message({ type: Math.random() > 0.5 ? 'fail' : 'clear', duration: 20000 })
+  P5Notification({ content: 'hello!', top: 200, character: 'kasumi' })
+  P5Message({ type: Math.random() > 0.5 ? 'fail' : 'clear', duration: 3000 })
 }
 
 const t_data = reactive([
@@ -39,10 +39,31 @@ onMounted(() => { })
 </script>
 
 <template>
-  <div class="app-ctn">
+
+  <div class="app-ctn" >
+
+    <div>
+      <p5-icon  name='back' />
+      <p5-icon  name='continue' />
+      <p5-icon  name='close' />
+      <p5-icon  name='confirm' />
+      <p5-icon  name='reply' />
+      <p5-icon  name='send' />
+    </div>
+
+    <div>
+      <p5-icon type="party" name='akechi' />
+      <p5-icon type="party" name='caroline' />
+      <p5-icon type="party" name='ryuji' />
+      <p5-icon type="party" name='p5' />
+      <p5-icon type="party" name='alibaba' />
+      <p5-icon type="party" name='ann' />
+      <p5-icon type="party" name='futaba' />
+      <p5-icon type="party" name='haru' />
+    </div>
+
     <p5-table :table_data="t_data" style="height:200px" fix="left-right">
       <p5-tableItem label="name" width="150"></p5-tableItem>
-
       <p5-tableItem label="address" width="250"></p5-tableItem>
     </p5-table>
     <p5-slider @change="slTest" placement="top" v-model="sl_value1" left_text="小" right_text="大"></p5-slider>
