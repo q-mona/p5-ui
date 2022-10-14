@@ -41,7 +41,7 @@ onMounted(() => { })
 <template>
 
   <div class="app-ctn" >
-
+    <p size="large" class="p5-hover-animation-gray">触发hover特效</p>
     <div>
       <p5-icon  name='back' />
       <p5-icon  name='continue' />

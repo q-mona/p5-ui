@@ -35,7 +35,7 @@ watch(() => props.content, (value, oldValue) => {
 
 // 设置额外的class
 const getExtraClass = (value) => {
-    const text_animation = value ? 'p5-title-animation' : ''
+    const text_animation = value ? 'p5-hover-animation-mix' : ''
     return `text-size-${props.size} ${text_animation}`
 }
 

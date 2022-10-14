@@ -1,4 +1,4 @@
-@mixin p5-title-pseudo-el-ctn {
+@mixin p5-hover-pseudo-el-ctn {
     content: '';
     position: absolute;
     top: -10%;
@@ -12,9 +12,9 @@
     @include p5-font;
 
     display: inline-block;
-    position: relative;
+    // position: relative;
     margin: 0;
-    z-index: 1;
+    // z-index: 1;
 
     span {
         display: inline-block;
@@ -22,16 +22,19 @@
     }
 }
 
-.p5-title-animation {
+.p5-hover-animation-mix {
+    position: relative;
+    z-index: 1;
+
     &:hover::before {
-        @include p5-title-pseudo-el-ctn;
+        @include p5-hover-pseudo-el-ctn;
 
         background-color: #1cfeff;
         animation: bgBlue 1s ease-in infinite;
     }
 
     &:hover::after {
-        @include p5-title-pseudo-el-ctn;
+        @include p5-hover-pseudo-el-ctn;
 
         mix-blend-mode: screen;
         background-color: #ff0022;

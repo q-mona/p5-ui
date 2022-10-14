@@ -28,6 +28,7 @@ $font-size-small: 14px;
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
 @mixin p5-abs-left-top {
     position: absolute;
     left: 0;
@@ -57,7 +58,7 @@ $font-size-small: 14px;
 }
 
 
-.p5-scrollbar{
+.p5-scrollbar {
     &::-webkit-scrollbar {
         background-color: transparent;
         width: 6px;
@@ -75,7 +76,58 @@ $font-size-small: 14px;
 }
 
 
-.back{
+.back {
     width: 50px;
     height: 30px;
+}
+
+
+.p5-hover-animation-gray {
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    &:hover::before {
+        background: $color-gray;
+        animation: bgGray 1s ease-out infinite;
+    }
+}
+
+@keyframes bgGray {
+    0% {
+        top: 6%;
+        transform: skew(-10deg, -2deg) scale(0.9);
+    }
+
+    20% {
+        top: 3%;
+        transform: skew(35deg, 4deg) scale(0.9);
+    }
+
+    40% {
+        top: -2%;
+        transform: skew(-20deg, -2deg) scale(0.95);
+    }
+
+    60% {
+        top: -4%;
+        transform: skew(20deg, 2deg) scale(1);
+    }
+
+    80% {
+        top: 3%;
+        transform: skew(-25deg, -4deg) scale(0.94);
+    }
+
+    100% {
+        top: 6%;
+        transform: skew(-10deg, -2deg) scale(0.9);
+    }
 }
