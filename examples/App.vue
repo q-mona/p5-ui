@@ -23,32 +23,50 @@ const showMsg = () => {
 }
 
 const t_data = reactive([
-  {name:'自行车', year: '2012-21-32', price: 18432, address: '的肌肤-地方撒-打法'},
-  {name:'多个', year: '2012-21-32', price: 24245, address: '进化就-地方撒-打法'},
-  {name:'自行夫是德国车', year: '2012-21-32', price: 24, address: '的肌肤-的广泛共识-打法'},
-  {name:'自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给'},
-  {name:'自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给'},
-  {name:'自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给'},
-  {name:'自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给'},
-  {name:'自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给'},
-  {name:'自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给'},
-  {name:'自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给'},
-  {name:'阿松大', year: '2012-21-32', price: 184312, address: '爱对方犯规-地方撒-打法'}
+  { name: '自行车', year: '2012-21-32', price: 18432, address: '的肌肤-地方撒-打法' },
+  { name: '多个', year: '2012-21-32', price: 24245, address: '进化就-地方撒-打法' },
+  { name: '自行夫是德国车', year: '2012-21-32', price: 24, address: '的肌肤-的广泛共识-打法' },
+  { name: '自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给' },
+  { name: '自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给' },
+  { name: '自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给' },
+  { name: '自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给' },
+  { name: '自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给' },
+  { name: '自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给' },
+  { name: '自第三个行车', year: '2012-21-32', price: 875224, address: '的肌肤-地方撒-a单独发给' },
+  { name: '阿松大', year: '2012-21-32', price: 184312, address: '爱对方犯规-地方撒-打法' }
 ])
-onMounted(() => { })
+
+
+const upload_test = ref(null)
+
+onMounted(() => {
+
+})
+const uploadTest = () => {
+  upload_test.value.submit((res, err) => {
+    console.log(res, err)
+  })
+}
+
 </script>
 
 <template>
 
-  <div class="app-ctn" >
-    <p size="large" class="p5-hover-animation-gray">触发hover特效</p>
+  <div class="app-ctn">
+    <p5-upload ref="upload_test" action=""></p5-upload>
+    <p5-text @click="uploadTest">点击上传图片</p5-text>
+    <p5-crowd></p5-crowd>
+
+    <p class="p5-hover-animation-gray">触发hover特效 gray</p>
+    <p5-text class="p5-hover-animation-mix">触发hover特效 mix</p5-text>
+
     <div>
-      <p5-icon  name='back' />
-      <p5-icon  name='continue' />
-      <p5-icon  name='close' />
-      <p5-icon  name='confirm' />
-      <p5-icon  name='reply' />
-      <p5-icon  name='send' />
+      <p5-icon name='back' />
+      <p5-icon name='continue' />
+      <p5-icon name='close' />
+      <p5-icon name='confirm' />
+      <p5-icon name='reply' />
+      <p5-icon name='send' />
     </div>
 
     <div>
