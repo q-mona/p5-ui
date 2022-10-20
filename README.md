@@ -4,9 +4,12 @@
 </p>  
 This project is still under development~
 
+# Document
+To develop your website you could visit [our document](https://p5ui.morna.cn).
+
 # Preview
 <p align="center">
-  <img width="300px" src="src/assets/preview.gif">
+  <img width="300px" src="src/assets/preview.png">
 </p>  
 
 # Simple Usage
@@ -40,40 +43,6 @@ const app = createApp(App)
 app.component(P5Button.name, P5Button)
 app.component(P5Switch.name, P5Switch)
 app.mount('#app')
-```
-
-# Components
-```
-<template>
-  <p5-title content="Hello World"
-            :animation="true"
-            font_color="#000"
-            selected_bg_color="#000"
-            selected_font_color="#fff"></p5-title>
-
-
-  <p5-button>normal button</p5-button>
-
-  <p5-divider></p5-divider>
-
-  <p5-divider direction="vertical"></p5-divider>
-
-  <p5-button>
-    <p5-title content="Hello World"></p5-title>
-  </p5-button>
-
-  <p5-switch v-model="sw_value1" size="small"></p5-switch>
-  <p5-switch v-model="sw_value2"></p5-switch>
-  <p5-switch v-model="sw_value3" size="large"></p5-switch>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-
-const sw_value1 = ref(true)
-const sw_value2 = ref(true)
-const sw_value3 = ref(false)
-</script>
 ```
 
 

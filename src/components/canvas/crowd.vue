@@ -1,5 +1,5 @@
 <script setup name='P5Crowd'>
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import crowd_imgs from './crowd.js'
 
 const p5_crowd = ref(null)

@@ -1,6 +1,6 @@
 <script setup name='P5Table'>
 import { computed } from '@vue/reactivity';
-import { onMounted, provide, reactive, ref, useSlots } from 'vue';
+import { onMounted, provide, ref, useSlots } from 'vue';
 const slots = useSlots()
 const props = defineProps({
     table_data: { type: Array, default: [] },

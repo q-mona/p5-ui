@@ -1,15 +1,15 @@
 <script setup name='P5Upload'>
 import { ref } from 'vue'
-import P5Zoom from './upload.js'
-import axios from 'axios'
-
+import P5Zoom from './zoom.js'
+import ajax from './ajax.js'
+import { getImageFile } from '../../utils/tool.js'
 const props = defineProps({
     size: { type: Number, default: 1024 },
     action: { type: String, default: '' }
 })
 
 const p5_input = ref(null)
-const default_src = 'src/assets/images/upload/default.png'
+const default_src = getImageFile('upload/default.png')
 const img_src = ref(default_src)
 const img_file = ref(null)
 const show_delete = ref(false)
@@ -65,10 +65,8 @@ const submit = (callback) => {
 
     const params = new FormData()
     params.append('file', img_file.value)
-    axios.post(props.action, params).then(res => {
-        callback(res, null)
-    }).catch(err => {
-        callback(null, err)
+    ajax(props.action, params, (res, err) => {
+        callback(res, err)
     })
 }
 defineExpose({ submit })
