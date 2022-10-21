@@ -40,7 +40,8 @@ const t_data = reactive([
 const upload_test = ref(null)
 
 onMounted(() => {
-
+  // P5Crowd.load({})
+  // setTimeout(()=>P5Crowd.remove(), 10000)
 })
 const uploadTest = () => {
   upload_test.value.submit((res, err) => {
@@ -48,14 +49,22 @@ const uploadTest = () => {
   })
 }
 
+const crowd_config = reactive({
+  width: 600,
+  height: 400
+})
+
+const crowd_dom = ref(null)
 </script>
 
 <template>
 
   <div class="app-ctn">
+    <p5-crowd ref="crowd_dom" :config="crowd_config" @click="crowd_dom.pause()" @dblclick="crowd_dom.resume()">
+    </p5-crowd>
+
     <p5-upload ref="upload_test" action="https://run.mocky.io/v3/c49d5ea2-dc86-4207-aed4-4fbd731c8518"></p5-upload>
     <p5-text @click="uploadTest">点击上传图片</p5-text>
-    <!-- <p5-crowd></p5-crowd> -->
 
     <p class="p5-hover-animation-gray">触发hover特效 gray</p>
     <p5-text class="p5-hover-animation-mix">触发hover特效 mix</p5-text>
