@@ -48,7 +48,7 @@ const initImgList = () => {
         temp_img.src = img
         img_list.push({
             img: temp_img,
-            step: Math.random() * 3 + default_config.step,
+            step: Math.random() * default_config.step + default_config.step,
             x: p5_crowd.value.width + idx * 100,
             y: 0,
             flag: idx < img_num / 2 ? true : false
@@ -60,7 +60,7 @@ const updateImgList = () => {
     img_set.clear()
     default_config.end = false
     img_list.forEach((item, idx) => {
-        item.step = Math.random() * 3 + default_config.step
+        item.step = Math.random() * default_config.step + default_config.step
         item.x = p5_crowd.value.width + idx * 100
     })
 }
