@@ -3,8 +3,10 @@ import { onMounted, reactive, ref, watch } from 'vue';
 import crowd_imgs from './image.js'
 
 const props = defineProps({
-    config: { type: Object, default: {} }
+    config: { type: Object, default: {} },
+    idx: { type: String, default: '' }
 })
+
 const p5_crowd = ref(null)
 const img_list = []
 const img_num = crowd_imgs.length
@@ -15,13 +17,13 @@ let animation_idx = null
 const default_config = reactive({
     width: window.innerWidth,
     height: window.innerHeight,
-    canvas_idx: `canvas_${new Date().getTime()}`,
     loop: true,
     pause: false,
     fixed: false,
     end: false,
     resize: false,
-    opacity: 1
+    opacity: 1,
+    step: 2
 })
 
 window.addEventListener('resize', () => {
@@ -35,9 +37,9 @@ const initCanvas = () => {
     for (const key in props.config) {
         default_config[key] = props.config[key]
     }
-
     p5_crowd.value.width = default_config.width
     p5_crowd.value.height = default_config.height
+    ctx = p5_crowd.value.getContext('2d')
 }
 
 const initImgList = () => {
@@ -46,10 +48,10 @@ const initImgList = () => {
         temp_img.src = img
         img_list.push({
             img: temp_img,
-            step: Math.random() * 3 + 2,
+            step: Math.random() * 3 + default_config.step,
             x: p5_crowd.value.width + idx * 100,
             y: 0,
-            flag: idx < img_num / 2 ? true : false // 控制移动方向(左/右)
+            flag: idx < img_num / 2 ? true : false
         })
     })
 }
@@ -58,8 +60,8 @@ const updateImgList = () => {
     img_set.clear()
     default_config.end = false
     img_list.forEach((item, idx) => {
-        item.step = Math.random() * 3 + 2,
-            item.x = p5_crowd.value.width + idx * 100
+        item.step = Math.random() * 3 + default_config.step
+        item.x = p5_crowd.value.width + idx * 100
     })
 }
 
@@ -77,9 +79,7 @@ const render = () => {
                     ctx.translate(-p5_crowd.value.width, 0)
                 }
                 ctx.drawImage(item.img, 0, 0, item.img.width, item.img.height,
-                    item.x, item.y, p5_crowd.value.height/2, p5_crowd.value.height)
-                // ctx.drawImage(item.img, 0, 0, item.img.width, item.img.height,
-                //     item.x, item.y, p5_crowd.value.height / 2, p5_crowd.value.height)
+                    item.x, item.y, p5_crowd.value.height / 2, p5_crowd.value.height)
                 ctx.restore()
             }
             else {
@@ -91,7 +91,7 @@ const render = () => {
                         default_config.end = true
                     }
                 }
-                else if(img_set.size == img_num - 2 && !default_config.loop){
+                else if (img_set.size == img_num - 2 && !default_config.loop) {
                     default_config.opacity = 0
                 }
             }
@@ -109,7 +109,6 @@ const update = () => {
 
 
 onMounted(() => {
-    ctx = p5_crowd.value.getContext('2d')
     initCanvas()
     initImgList()
     update()
@@ -129,9 +128,13 @@ const resume = () => {
     default_config.pause = false
 }
 
+
 const remove = () => {
     cancelAnimationFrame(animation_idx)
-    p5_crowd.value.remove()
+    if(props.idx == '')
+        p5_crowd.value.remove()
+    else
+        document.querySelector('#' + props.idx).remove()
 }
 
 defineExpose({
@@ -142,6 +145,6 @@ defineExpose({
 </script>
 
 <template>
-    <canvas :id="default_config.canvas_idx" ref="p5_crowd" class="p5-crowd" :class="[default_config.fixed?'p5-crowd-fixed':'']"
+    <canvas ref="p5_crowd" class="p5-crowd" :class="[default_config.fixed?'p5-crowd-fixed':'']"
         :style="{'opacity': default_config.opacity}"></canvas>
 </template>

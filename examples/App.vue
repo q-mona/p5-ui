@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from '@vue/reactivity';
 import { onMounted, ref, reactive } from 'vue';
-import { P5Message, P5Notification } from '../src/index.js'
+import { P5CreateCrowd, P5Message, P5Notification } from '../src/index.js'
 const text1 = computed(() => sw_value1.value ? '你好 世界' : '浮动空间，给定。官方，非递归！给?fd给定。')
 const text2 = ref('为了在声明 props 和 emits 选项时获得完整的类型推导支持，我们可以使用 defineProps 和 defineEmits API，它们将自动地在 <script setup> 中可用。')
 
@@ -55,13 +55,20 @@ const crowd_config = reactive({
 })
 
 const crowd_dom = ref(null)
+
+
+const crowd_test = () => {
+  P5CreateCrowd({ loop: false, resize: true, fixed: true, step: 4 })
+}
 </script>
 
 <template>
 
   <div class="app-ctn">
-    <p5-crowd ref="crowd_dom" :config="crowd_config" @click="crowd_dom.pause()" @dblclick="crowd_dom.resume()">
+    <p5-crowd ref="crowd_dom" :config="crowd_config" @click="crowd_dom.remove()" @dblclick="crowd_dom.resume()">
     </p5-crowd>
+
+    <p5-button @click="crowd_test">test</p5-button>
 
     <p5-upload ref="upload_test" action="https://run.mocky.io/v3/c49d5ea2-dc86-4207-aed4-4fbd731c8518"></p5-upload>
     <p5-text @click="uploadTest">点击上传图片</p5-text>
