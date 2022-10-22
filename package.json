@@ -1,7 +1,7 @@
 {
   "name": "p5-ui",
   "auther": "AYi",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "dist/p5-ui.cjs",
   "module": "dist/p5-ui.js",
   "type": "module",

@@ -7,7 +7,7 @@ import P5Title from '../title/title.vue'
 const props = defineProps({
     top: { type: Number, default: 100 },
     left: { type: Number, default: 100 },
-    character: { type: String, default: 'Mona' },
+    character: { type: String, default: 'mona' },
     content: { type: String, default: '' },
     idx: { type: String, require: true }
 })
