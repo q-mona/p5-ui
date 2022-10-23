@@ -1,7 +1,7 @@
 <script setup name='P5Notification'>
 import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import Characters from './character.js'
-import { getImageFile } from '../../utils/tool.js'
+import { getNotiImageFile } from '../../utils/tool.js'
 import P5Title from '../title/title.vue'
 
 const props = defineProps({
@@ -42,7 +42,7 @@ onBeforeUnmount(() => {
 <template>
     <div class="p5-noti-ctn" :style="{top: top+'px', left: move_left+'px'}" @click="destroyDom">
         <div class="p5-noti-sub-ctn">
-            <img class="p5-portrait-img" :src="getImageFile(`portraits/${character}.png`)" alt="">
+            <img class="p5-portrait-img" :src="getNotiImageFile(`${character}.png`)" alt="">
 
             <div class="p5-dialog-ctn">
                 <img class="p5-dialog-img" src="../../assets/images/notification.png" alt="">

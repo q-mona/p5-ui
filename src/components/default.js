@@ -1,6 +1,6 @@
 import * as components from './components.js'
-
-const install = (app) => {
+const P5UI = {}
+P5UI.install = (app) => {
     const component_names = Object.keys(components)
     const vue_components = component_names.map((name) => components[name])
     vue_components.forEach((component) => {
@@ -8,4 +8,4 @@ const install = (app) => {
     })
 }
 
-export default install
+export default P5UI

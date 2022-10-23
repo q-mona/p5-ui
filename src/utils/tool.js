@@ -10,10 +10,20 @@ function debounce(func, wait) {
     }
 }
 
-const getImageFile = (url) => {
-    return new URL(`../assets/images/${url}`, import.meta.url).href
- }
+const getNotiImageFile = (url) => {
+    return new URL(`../assets/images/portraits/${url}`, import.meta.url).href
+}
+
+const getMsgImageFile = (url) => {
+    return new URL(`../assets/images/msg/${url}`, import.meta.url).href
+}
+
+const getUploadImageFile = (url) => {
+    return new URL(`../assets/images/upload/${url}`, import.meta.url).href
+}
 export {
     debounce,
-    getImageFile
+    getNotiImageFile,
+    getMsgImageFile,
+    getUploadImageFile
 }

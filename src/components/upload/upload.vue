@@ -2,14 +2,14 @@
 import { ref } from 'vue'
 import P5Zoom from './zoom.js'
 import ajax from './ajax.js'
-import { getImageFile } from '../../utils/tool.js'
+import { getUploadImageFile } from '../../utils/tool.js'
 const props = defineProps({
     size: { type: Number, default: 1024 },
     action: { type: String, default: '' }
 })
 
 const p5_input = ref(null)
-const default_src = getImageFile('upload/default.png')
+const default_src = getUploadImageFile('default.png')
 const img_src = ref(default_src)
 const img_file = ref(null)
 const show_delete = ref(false)
