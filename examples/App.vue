@@ -58,7 +58,7 @@ const crowd_dom = ref(null)
 
 
 const crowd_test = () => {
-  P5CreateCrowd({ loop: false, resize: true, fixed: true, step: 4 })
+  P5CreateCrowd({ loop: false, resize: true, fixed: true, step: 3 })
 }
 </script>
 

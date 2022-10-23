@@ -43,17 +43,21 @@ const initCanvas = () => {
 }
 
 const initImgList = () => {
-    crowd_imgs.forEach((img, idx) => {
+    for (let i = 0; i < img_num * 2; i++) {
+        const img = crowd_imgs[i % img_num]
         const temp_img = new Image()
         temp_img.src = img
         img_list.push({
             img: temp_img,
             step: Math.random() * default_config.step + default_config.step,
-            x: p5_crowd.value.width + idx * 100,
-            y: 0,
-            flag: idx < img_num / 2 ? true : false
+            step_y: Math.random() * 0.2 + 0.2,
+            x: p5_crowd.value.width + i * 100,
+            y: 20,
+            flag_x: i < img_num ? true : false,
+            flag_y: true,
+            idx: i
         })
-    })
+    }
 }
 
 const updateImgList = () => {
@@ -61,20 +65,38 @@ const updateImgList = () => {
     default_config.end = false
     img_list.forEach((item, idx) => {
         item.step = Math.random() * default_config.step + default_config.step
-        item.x = p5_crowd.value.width + idx * 100
+        item.step_y = Math.random() * 0.2 + 0.2,
+            item.x = p5_crowd.value.width + idx * 100
     })
 }
 
 const render = () => {
     ctx.clearRect(0, 0, p5_crowd.value.width, p5_crowd.value.height)
+    ctx.beginPath()
+    ctx.fillStyle = 'rgb(0, 0, 0)'
     ctx.fillRect(0, 0, p5_crowd.value.width, p5_crowd.value.height)
+
     img_list.forEach((item, idx) => {
         if (item.img.complete) {
             if (item.x >= -item.img.width) {
                 item.x -= item.step
 
+                if (item.flag_y) {
+                    if (item.y - item.step_y >= 0)
+                        item.y -= item.step_y
+                    else
+                        item.flag_y = false
+                }
+                else {
+                    if (item.y + item.step_y <= 20)
+                        item.y += item.step_y
+                    else
+                        item.flag_y = true
+                }
+
+
                 ctx.save()
-                if (item.flag) {
+                if (item.flag_x) {
                     ctx.scale(-1, 1)
                     ctx.translate(-p5_crowd.value.width, 0)
                 }
@@ -83,20 +105,27 @@ const render = () => {
                 ctx.restore()
             }
             else {
-                img_set.add(idx)
-                if (img_set.size == img_num) {
+                img_set.add(item.idx)
+                if (img_set.size == img_num * 2) {
                     if (default_config.loop)
                         updateImgList()
                     else {
                         default_config.end = true
                     }
                 }
-                else if (img_set.size == img_num - 2 && !default_config.loop) {
+                else if (img_set.size == img_num * 2 - 2 && !default_config.loop) {
                     default_config.opacity = 0
                 }
             }
         }
     })
+
+    ctx.save()
+    ctx.shadowBlur = 100;
+    ctx.fillStyle = "rgb(0,0,0,0.2)";
+    ctx.shadowColor = "#8360c3";
+    ctx.fillRect(0, 0, p5_crowd.value.width, p5_crowd.value.height);
+    ctx.restore()
 }
 
 const update = () => {
@@ -131,7 +160,7 @@ const resume = () => {
 
 const remove = () => {
     cancelAnimationFrame(animation_idx)
-    if(props.idx == '')
+    if (props.idx == '')
         p5_crowd.value.remove()
     else
         document.querySelector('#' + props.idx).remove()
