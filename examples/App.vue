@@ -40,8 +40,11 @@ const t_data = reactive([
 const upload_test = ref(null)
 
 onMounted(() => {
-  // P5Crowd.load({})
-  // setTimeout(()=>P5Crowd.remove(), 10000)
+  const test = P5CreateCrowd({fixed:true, loop:false}, ()=>{
+    console.log('end')
+  })
+  setTimeout(()=>test.pause(), 500)
+  setTimeout(()=>test.resume(), 1000)
 })
 const uploadTest = () => {
   upload_test.value.submit((res, err) => {

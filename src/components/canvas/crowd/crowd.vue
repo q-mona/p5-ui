@@ -15,7 +15,8 @@ import c11 from '../../../assets/images/crowd/crowd11.png'
 
 const props = defineProps({
     config: { type: Object, default: {} },
-    idx: { type: String, default: '' }
+    idx: { type: String, default: '' },
+    onClose: { type: Function, default: () => { } }
 })
 
 const crowd_imgs = [c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11]
@@ -134,9 +135,9 @@ const render = () => {
 
     ctx.save()
     ctx.shadowBlur = 100;
-    ctx.fillStyle = "rgb(0,0,0,0.2)";
-    ctx.shadowColor = "#8360c3";
-    ctx.fillRect(0, 0, p5_crowd.value.width, p5_crowd.value.height);
+    ctx.fillStyle = "rgb(0,0,0,0.2)"
+    ctx.shadowColor = "#8360c3"
+    ctx.fillRect(0, 0, p5_crowd.value.width, p5_crowd.value.height)
     ctx.restore()
 }
 
@@ -171,6 +172,7 @@ const resume = () => {
 
 
 const remove = () => {
+    props.onClose()
     cancelAnimationFrame(animation_idx)
     if (props.idx == '')
         p5_crowd.value.remove()
