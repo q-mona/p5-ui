@@ -78,8 +78,8 @@ const updateImgList = () => {
     default_config.end = false
     img_list.forEach((item, idx) => {
         item.step = Math.random() * default_config.step + default_config.step
-        item.step_y = Math.random() * 0.2 + 0.2,
-            item.x = p5_crowd.value.width + idx * 100
+        item.step_y = Math.random() * 0.2 + 0.2
+        item.x = p5_crowd.value.width + idx * 100
     })
 }
 
@@ -88,12 +88,10 @@ const render = () => {
     ctx.beginPath()
     ctx.fillStyle = 'rgb(0, 0, 0)'
     ctx.fillRect(0, 0, p5_crowd.value.width, p5_crowd.value.height)
-
     img_list.forEach((item, idx) => {
         if (item.img.complete) {
             if (item.x >= -item.img.width) {
                 item.x -= item.step
-
                 if (item.flag_y) {
                     if (item.y - item.step_y >= 0)
                         item.y -= item.step_y
@@ -106,8 +104,6 @@ const render = () => {
                     else
                         item.flag_y = true
                 }
-
-
                 ctx.save()
                 if (item.flag_x) {
                     ctx.scale(-1, 1)
@@ -132,7 +128,6 @@ const render = () => {
             }
         }
     })
-
     ctx.save()
     ctx.shadowBlur = 100;
     ctx.fillStyle = "rgb(0,0,0,0.2)"
@@ -147,8 +142,6 @@ const update = () => {
     }
     animation_idx = requestAnimationFrame(update)
 }
-
-
 
 onMounted(() => {
     initCanvas()
@@ -169,7 +162,6 @@ const pause = () => {
 const resume = () => {
     default_config.pause = false
 }
-
 
 const remove = () => {
     props.onClose()
