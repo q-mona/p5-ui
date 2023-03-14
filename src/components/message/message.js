@@ -22,6 +22,9 @@ export default ({ type, duration }) => {
 
     clearTimeout(timer)
     timer = setTimeout(() => {
-        msg_list.forEach((div) => div.remove())
+        msg_list.forEach((div) => {
+            div.remove()
+            div = null
+        })
     }, dura)
 }

@@ -166,10 +166,15 @@ const resume = () => {
 const remove = () => {
     props.onClose()
     cancelAnimationFrame(animation_idx)
-    if (props.idx == '')
+    if (props.idx == '') {
         p5_crowd.value.remove()
-    else
-        document.querySelector('#' + props.idx).remove()
+        p5_crowd.value = null
+    }
+    else {
+        let dom = document.querySelector('#' + props.idx)
+        dom.remove()
+        dom = null
+    }
 }
 
 defineExpose({
@@ -180,6 +185,6 @@ defineExpose({
 </script>
 
 <template>
-    <canvas ref="p5_crowd" class="p5-crowd" :class="[default_config.fixed?'p5-crowd-fixed':'']"
-        :style="{'opacity': default_config.opacity}"></canvas>
+    <canvas ref="p5_crowd" class="p5-crowd" :class="[default_config.fixed ? 'p5-crowd-fixed' : '']"
+        :style="{ 'opacity': default_config.opacity }"></canvas>
 </template>
