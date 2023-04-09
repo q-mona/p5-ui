@@ -9,7 +9,7 @@ const props = defineProps({
     left: { type: Number, default: 100 },
     character: { type: String, default: 'mona' },
     content: { type: String, default: '' },
-    idx: { type: String, require: true }
+    onDestroy: { type: Function, default: () => { } }
 })
 
 
@@ -29,18 +29,13 @@ onMounted(() => {
 })
 
 
-const destroyDom = () => {
-    document.querySelector(`#${props.idx}`).remove()
-}
-
 onBeforeUnmount(() => {
     clearInterval(timer)
-    timer = null
 })
 </script>
 
 <template>
-    <div class="p5-noti-ctn" :style="{top: top+'px', left: move_left+'px'}" @click="destroyDom">
+    <div class="p5-noti-ctn" :style="{top: top+'px', left: move_left+'px'}" @click="props.onDestroy">
         <div class="p5-noti-sub-ctn">
             <img class="p5-portrait-img" :src="getNotiImageFile(`${character}.png`)" alt="">
 
